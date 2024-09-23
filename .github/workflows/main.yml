@@ -1,10 +1,9 @@
 name: Trigger Pipeline
 
 on:
-  workflow_run:
-    workflows: ["Scrape TechCrunch"]
-    types:
-      - completed
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight
+  workflow_dispatch: null
 
 jobs:
   run-pipeline:
