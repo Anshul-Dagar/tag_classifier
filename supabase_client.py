@@ -9,5 +9,23 @@ def fetch_articles():
     response = client.table("articles").select("*").execute()
     return response.data
 
-if __name__ == "__main__":
-    fetch_articles()
+def update_tags(article_id, tags):
+    client = get_supabase_client()
+    data = {
+        "tag_1": tags[0],
+        "tag_2":tags[1],
+        "tag_3" :tags[2]
+    }
+    print(data)
+    response = client.table("articles").update(data).eq('id', article_id).execute()
+    
+    if response and response.data:
+        return response.data
+    else:
+        print("No data found or an error occurred.")
+        return None
+
+
+
+# if __name__ == "__main__":
+#     fetch_articles()
