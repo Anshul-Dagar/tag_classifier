@@ -1,0 +1,5 @@
+supabase
+keybert
+transformers
+sentence-transformers
+requests
